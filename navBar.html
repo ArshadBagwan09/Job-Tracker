@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style/navBarStyle.css">
+
+  <!-- Boxicons -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>CareerHub Navbar</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="jobLogo.png" alt="penStoreDas Logo" class="logo-img">
+      </a>
+    </div>
+
+
+    <!-- HAMBURGER -->
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="nav-bar">
+      <ul>
+
+        <!-- HOME -->
+        <li><a href="/JobAppTracker/index.html"><i class='bx bxs-home'></i> Home</a></li>
+
+        <!-- DASHBOARD DROPDOWN -->
+        <li class="dropdown">
+          <a href="/JobAppTracker/user/dashboard.php" class="dashboard-link">
+            <i class='bx bxs-dashboard'></i> Dashboard
+          </a>
+
+          <span class="dropdown-toggle">
+            <i class='bx bx-chevron-down'></i>
+          </span>
+
+          <ul class="dropdown-menu">
+            <li><a href="/JobAppTracker/user/applications.php"><i class='bx bxs-briefcase'></i> My Applications</a></li>
+            <li><a href="/JobAppTracker/user/companyDetails.php"><i class='bx bxs-building'></i> Companies</a></li>
+            <li><a href="/JobAppTracker/user/jobs.php"><i class='bx bxs-plus-circle'></i> Jobs</a></li>
+            <li><a href="/JobAppTracker/user/interviews.php"><i class='bx bxs-calendar'></i> Interviews</a></li>
+            <li><a href="/JobAppTracker/user/resume.php"><i class='bx bxs-file'></i> Resume</a></li>
+          </ul>
+        </li>
+
+        <!-- ABOUT -->
+        <li><a href="/JobAppTracker/about-us.php"><i class='bx bxs-info-circle'></i> About Us</a></li>
+
+        <!-- CONTACT -->
+        <li><a href="/JobAppTracker/contact.php"><i class='bx bxs-phone-call'></i> Contact Us</a></li>
+
+        <!-- LOGOUT -->
+        <li><a href="/JobAppTracker/Backend/LogOutBackend.php" class="logout">
+            <i class='bx bxs-log-out'></i> Logout
+          </a></li>
+
+      </ul>
+    </nav>
+
+
+  </header>
+  <div class="overlay"></div>
+
+  <script>
+    // ✅ Hamburger toggle
+    const hamburger = document.querySelector(".hamburger");
+    const navBar = document.querySelector(".nav-bar");
+    const overlay = document.querySelector(".overlay");
+
+    hamburger.onclick = () => {
+      hamburger.classList.toggle("active");
+      navBar.classList.toggle("active");
+      overlay.classList.toggle("active");
+
+      // Body scroll lock toggle
+      document.body.classList.toggle("body-lock");
+    };
+
+    // Overlay click pe menu close
+    overlay.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navBar.classList.remove("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("body-lock");
+    });
+
+
+    // ✅ Active link highlight with Dashboard support
+    // ✅ Active link highlight with Dashboard support
+    const currentLocation = location.href;
+    const links = document.querySelectorAll('.nav-bar ul li a');
+
+    let dashboardActive = false;
+
+    links.forEach(link => {
+      if (currentLocation.includes(link.getAttribute("href"))) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        // ✅ Agar link dashboard ka child hai → parent bhi active hoga
+        if (link.closest(".dropdown-menu")) {
+          const parentDropdown = link.closest(".dropdown");
+          parentDropdown.querySelector(".dashboard-link").classList.add("active");
+          parentDropdown.querySelector(".dropdown-toggle i").classList.add("active-icon");
+          dashboardActive = true;
+        }
+      }
+    });
+
+    // ✅ Agar direct dashboard.php pe ho
+    if (!dashboardActive && currentLocation.includes("user/dashboard.php")) {
+      document.querySelector(".dashboard-link").classList.add("active");
+      document.querySelector(".dropdown-toggle i").classList.add("active-icon");
+    }
+
+    // ✅ Dropdown toggle
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        let parent = this.parentElement;
+        parent.classList.toggle("open");
+      });
+    });
+  </script>
+
+  <script>
+    const menuBtn = document.querySelector('.hamburger');
+    overlay = document.querySelector('.overlay');
+
+    menuBtn.addEventListener('click', () => {
+      overlay.classList.toggle('active');
+    });
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Job Tracker | Stay Organized</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style/navBarStyle.css">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+
+  <!-- google fonts link -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <!-- Audiowide -->
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Syncopate:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font awsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <script src="https://kit.fontawesome.com/ef970a0af0.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #1e293b;
+      --gradient: linear-gradient(135deg, #2563eb, #7c3aed);
+      --bg: #f8fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: poppins;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #333;
+    }
+
+    /* Navbar (UNCHANGED) */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 60px;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 60px;
+      min-height: 80vh;
+    }
+
+    .hero-text {
+      width: 50%;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(28px, 5vw, 50px);
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: clamp(14px, 2vw, 18px);
+      color: #64748b;
+      margin-bottom: 25px;
+    }
+
+    .hero-text button {
+      padding: 14px 30px;
+      background: var(--gradient);
+      border: none;
+      color: #fff;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: clamp(13px, 1.5vw, 16px);
+      cursor: pointer;
+      transition: .3s;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-text button:hover {
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    .hero img,
+    .hero lottie-player {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+    }
+
+    /* Sections */
+    .section {
+      padding: 60px;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: clamp(22px, 3vw, 30px);
+      color: #1e293b;
+    }
+
+    /* Cards */
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .card {
+      width: 280px;
+      padding: 25px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card i {
+      font-size: clamp(28px, 3vw, 36px);
+      margin-bottom: 15px;
+      color: #2563eb;
+    }
+
+    .card h3 {
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .card p {
+      font-size: clamp(13px, 1.5vw, 15px);
+    }
+
+    /* Company Cards */
+    .company-card {
+      width: 300px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .company-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient);
+    }
+
+    .company-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .company-card h3 {
+      font-size: clamp(18px, 2vw, 22px);
+      color: #1e293b;
+    }
+
+    .company-card p {
+      font-size: clamp(13px, 1.5vw, 15px);
+      color: #666;
+    }
+
+    .company-card button {
+      margin-top: 10px;
+      padding: 8px 18px;
+      border: none;
+      background: var(--gradient);
+      color: #fff;
+      border-radius: 20px;
+      font-size: clamp(12px, 1.3vw, 14px);
+      cursor: pointer;
+    }
+
+    /* Tablet */
+    @media(max-width:900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 30px;
+      }
+
+      .hero-text {
+        width: 100%;
+      }
+
+      .hero img {
+        margin-top: 30px;
+        width: 260px;
+      }
+
+      .section {
+        padding: 40px 30px;
+      }
+
+      .navbar {
+        padding: 15px 30px;
+      }
+    }
+
+    /* Mobile */
+    @media(max-width:600px) {
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        text-align: center;
+        display: none;
+        padding: 20px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-buttons {
+        display: none;
+      }
+
+      .navbar {
+        padding: 15px 20px;
+        position: relative;
+      }
+
+      .hero img {
+        width: 220px;
+      }
+
+      .card,
+      .company-card {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+
+    /* Chatbot */
+    /* Chatbot Toggle Button */
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--gradient);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      z-index: 2000;
+    }
+
+    /* Chatbot Box */
+    .chatbot-box {
+      position: fixed;
+      bottom: 100px;
+      right: 25px;
+      width: 320px;
+      height: 420px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 2000;
+    }
+
+    .chatbot-box {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.3s;
+    }
+
+    .chatbot-box.active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Header */
+    .chatbot-header {
+      background: var(--gradient);
+      color: white;
+      padding: 15px;
+      font-weight: 600;
+      font-size: clamp(14px, 1.5vw, 16px);
+    }
+
+    /* Body (IMPORTANT FIX) */
+    .chatbot-body {
+      flex: 1;
+      /* ⭐ ye important hai */
+      padding: 12px;
+      overflow-y: auto;
+      /* ⭐ scroll fix */
+      background: #f4f7fb;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Messages */
+    .message {
+      margin: 6px 0;
+      padding: 10px 14px;
+      border-radius: 15px;
+      max-width: 75%;
+      font-size: clamp(12px, 1.4vw, 14px);
+      word-wrap: break-word;
+      /* ⭐ overflow fix */
+    }
+
+    /* Bot message */
+    .bot {
+      background: #e5e7eb;
+      align-self: flex-start;
+    }
+
+    /* User message */
+    .user {
+      background: #2563eb;
+      color: white;
+      align-self: flex-end;
+    }
+
+    /* Options */
+    .options {
+      margin-top: 6px;
+    }
+
+    .options button {
+      margin: 4px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      background: #e2e8f0;
+      font-size: clamp(12px, 1.3vw, 14px);
+      transition: 0.2s;
+    }
+
+    .options button:hover {
+      background: #cbd5f5;
+    }
+
+    .options button.selected {
+      background: #2563eb;
+      color: white;
+    }
+
+    /* OPTIONAL (input box agar add kare future me) */
+    .chatbot-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    .chatbot-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+
+    .chatbot-input button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .message {
+      font-size: clamp(12px, 1.4vw, 14px);
+    }
+
+    .options button {
+      font-size: clamp(12px, 1.3vw, 14px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="jobLogo.png" alt="penStore Logo" class="logo-img">
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <div class="hamburger" aria-label="Toggle Menu" role="button" tabindex="0">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="nav-bar">
+      <ul>
+        <li><a href="index.html"><i class='bx bxs-home'></i> Home</a></li>
+
+        <!-- Dropdown Menu -->
+        <li class="dropdown">
+          <a href="user/dashboard.php" class="dashboard-link"><i class='bx bxs-dashboard'></i> Dashboard</a>
+          <span class="dropdown-toggle"><i class='bx bx-chevron-down'></i></span>
+          <ul class="dropdown-menu">
+            <li><a href="user/applications.php"><i class='bx bxs-briefcase'></i> My Applications</a></li>
+            <li><a href="user/companyDetails.php"><i class='bx bxs-building'></i> Companies</a></li>
+            <li><a href="user/jobs.php"><i class='bx bxs-plus-circle'></i> Jobs</a></li>
+            <li><a href="user/interviews.php"><i class='bx bxs-calendar'></i> Interviews</a></li>
+            <li><a href="user/resume.php"><i class='bx bxs-file'></i> Resume</a></li>
+          </ul>
+        </li>
+
+        <li><a href="about-us.php"><i class='bx bxs-info-circle'></i> About Us</a></li>
+        <li><a href="contact.php"><i class='bx bxs-phone-call'></i> Contact Us</a></li>
+        <li><a href="Backend/LogOutBackend.php" class="logout"><i class='bx bxs-log-out'></i> Logout</a>
+        </li>
+      </ul>
+
+    </nav>
+
+
+  </header>
+  <div class="overlay"></div>
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Build Your Career With Confidence</h1>
+        <p>Stay organized, manage interviews, monitor offers and never miss an opportunity again. Your personal job
+          application assistant</p>
+        <button onclick="start()">Get Started</button>
+      </div>
+      <!-- <img src="images/1_QNgN523Uz11ckMtlwVUxLw.gif" alt="Career Animation"> -->
+      <lottie-player src="Style/title.json" background="transparent" speed=".7" style="width: 400px; height: 400px;"
+        loop autoplay>
+      </lottie-player>
+
+      <!-- Chatbot Toggle Button -->
+      <div class="chatbot-toggle" id="toggleChat" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+      </div>
+
+      <!-- Chatbot Box -->
+      <div class="chatbot-box" id="chatbot">
+        <div class="chatbot-header">
+          CareerHub Assistant 🤖
+        </div>
+        <div class="chatbot-body" id="chatBody">
+          <p><b>Bot:</b> Hi! How can I help you today?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section">
+      <h2>Why Choose CareerHub?</h2>
+      <div class="card-container">
+        <div class="card">
+          <i class="fas fa-user-tie"></i>
+          <h3>Professional Profile</h3>
+          <p>Create your profile and upload resume.</p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-briefcase"></i>
+          <h3>Latest Jobs</h3>
+          <p>Explore jobs from top companies.</p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-paper-plane"></i>
+          <h3>Quick Apply</h3>
+          <p>Apply easily with one click.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Companies -->
+    <section class="section">
+      <h2>Top Hiring Companies</h2>
+      <div class="card-container">
+        <div class="company-card">
+          <h3><i class="fab fa-google"></i> Google</h3>
+          <p>Software Engineer</p>
+          <p>Bangalore</p>
+          <button onclick="apply()">Apply</button>
+        </div>
+
+        <div class="company-card">
+          <h3><i class="fab fa-amazon"></i> Amazon</h3>
+          <p>Backend Developer</p>
+          <p>Hyderabad</p>
+          <button onclick="apply()">Apply</button>
+        </div>
+
+        <div class="company-card">
+          <h3><i class="fab fa-microsoft"></i> Microsoft</h3>
+          <p>System Analyst</p>
+          <p>Pune</p>
+          <button onclick="apply()">Apply</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  </div>
+
+  <script>
+    // ✅ Hamburger toggle
+    const hamburger = document.querySelector(".hamburger");
+    const navBar = document.querySelector(".nav-bar");
+    const overlay = document.querySelector(".overlay");
+
+    hamburger.onclick = () => {
+      hamburger.classList.toggle("active");
+      navBar.classList.toggle("active");
+      overlay.classList.toggle("active");
+
+      // Body scroll lock toggle
+      document.body.classList.toggle("body-lock");
+    };
+
+    // Overlay click pe menu close
+    overlay.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navBar.classList.remove("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("body-lock");
+    });
+
+
+    // ✅ Active link highlight with Dashboard support
+    const currentLocation = location.href;
+    const links = document.querySelectorAll('.nav-bar ul li a');
+
+    let dashboardActive = false;
+
+    links.forEach(link => {
+      if (currentLocation.includes(link.getAttribute("href"))) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        // ✅ Agar link dashboard ka child hai → parent bhi active hoga
+        if (link.closest(".dropdown-menu")) {
+          const parentDropdown = link.closest(".dropdown");
+          parentDropdown.querySelector(".dashboard-link").classList.add("active");
+          parentDropdown.querySelector(".dropdown-toggle i").classList.add("active-icon");
+          dashboardActive = true;
+        }
+      }
+    });
+
+    // ✅ Agar direct dashboard.php pe ho
+    if (!dashboardActive && currentLocation.includes("user/dashboard.php")) {
+      document.querySelector(".dashboard-link").classList.add("active");
+      document.querySelector(".dropdown-toggle i").classList.add("active-icon");
+    }
+
+    // ✅ Dropdown toggle
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        let parent = this.parentElement;
+        parent.classList.toggle("open");
+      });
+    });
+  </script>
+
+  <script>
+    const menuBtn = document.querySelector('.hamburger');
+    overlay = document.querySelector('.overlay');
+
+    menuBtn.addEventListener('click', () => {
+      overlay.classList.toggle('active');
+    });
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    function start() {
+      window.location.href = "register.php";
+    }
+
+    function apply() {
+      alert("Please login to apply");
+      window.location.href = "login.php";
+    }
+
+    function toggleChat() {
+      const chat = document.getElementById("chatbot");
+      chat.classList.toggle("active");
+    }
+
+    // Chatboot 
+
+
+    let step = 0;
+    let selectedAnswers = [];
+
+    const jobFlow = [
+
+      // ---------------- WELCOME ----------------
+
+      {
+        question: "Welcome to CHaboot Job Assistant & Tracker 👋",
+        type: "info"
+      },
+
+      {
+        question: "What would you like to do today?",
+        type: "single",
+        options: [
+          "Find a Job",
+          "Track My Application",
+          "Prepare for Interview",
+          "Update My Profile"
+        ]
+      },
+
+      // ================= JOB SEARCH SECTION =================
+
+      {
+        question: "What type of job are you looking for?",
+        type: "single",
+        options: [
+          "Frontend Developer",
+          "Backend Developer",
+          "Full Stack Developer",
+          "Data Analyst",
+          "DevOps Engineer",
+          "UI/UX Designer"
+        ]
+      },
+
+      {
+        question: "Which technologies are you comfortable with? (Select multiple)",
+        type: "multi",
+        options: [
+          "Java",
+          "Spring Boot",
+          "React",
+          "Angular",
+          "Node.js",
+          "Python",
+          "SQL",
+          "MongoDB"
+        ]
+      },
+
+      {
+        question: "What is your experience level?",
+        type: "single",
+        options: [
+          "Fresher",
+          "0-1 Years",
+          "1-3 Years",
+          "3-5 Years",
+          "5+ Years"
+        ]
+      },
+
+      {
+        question: "What type of employment are you looking for?",
+        type: "single",
+        options: [
+          "Full-Time",
+          "Part-Time",
+          "Internship",
+          "Contract",
+          "Remote"
+        ]
+      },
+
+      {
+        question: "Preferred job location? (Select multiple)",
+        type: "multi",
+        options: [
+          "Pune",
+          "Mumbai",
+          "Bangalore",
+          "Hyderabad",
+          "Delhi",
+          "Remote"
+        ]
+      },
+
+      {
+        question: "Expected salary range?",
+        type: "single",
+        options: [
+          "Below 3 LPA",
+          "3-6 LPA",
+          "6-10 LPA",
+          "10-15 LPA",
+          "15+ LPA"
+        ]
+      },
+
+      {
+        question: "When can you join?",
+        type: "single",
+        options: [
+          "Immediately",
+          "15 Days",
+          "1 Month",
+          "2+ Months"
+        ]
+      },
+
+      // ================= JOB TRACKER SECTION =================
+
+      {
+        question: "Which job role did you apply for?",
+        type: "single",
+        options: [
+          "Frontend Developer",
+          "Backend Developer",
+          "Full Stack Developer",
+          "Data Analyst",
+          "Other"
+        ]
+      },
+
+      {
+        question: "Where did you apply from?",
+        type: "single",
+        options: [
+          "LinkedIn",
+          "Naukri",
+          "Indeed",
+          "Company Website",
+          "Referral"
+        ]
+      },
+
+      {
+        question: "What is the current status of your application?",
+        type: "single",
+        options: [
+          "Applied",
+          "Shortlisted",
+          "Interview Scheduled",
+          "Rejected",
+          "Offer Received"
+        ]
+      },
+
+      {
+        question: "When is your interview scheduled?",
+        type: "single",
+        options: [
+          "Today",
+          "Tomorrow",
+          "This Week",
+          "Next Week",
+          "Not Scheduled Yet"
+        ]
+      },
+
+      // ================= HELP SECTION =================
+
+      {
+        question: "Which areas do you need help with? (Select multiple)",
+        type: "multi",
+        options: [
+          "Resume Building",
+          "Interview Preparation",
+          "Technical Skills",
+          "Project Guidance",
+          "Career Counseling",
+          "Resume Review",
+          "Mock Interview",
+          "Salary Negotiation Tips"
+        ]
+      },
+
+      // ---------------- FINAL MESSAGE ----------------
+
+      {
+        question: "Great 👍 Based on your responses, we will suggest matching jobs, track your applications, and assist you with preparation.",
+        type: "info"
+      }
+
+    ];
+
+    function showBotMessage(text) {
+      const chat = document.getElementById("chatBody");
+      chat.innerHTML += `<div class="message bot">${text}</div>`;
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function showUserMessage(text) {
+      const chat = document.getElementById("chatBody");
+      chat.innerHTML += `<div class="message user">${text}</div>`;
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function showOptions(options, type) {
+      const chat = document.getElementById("chatBody");
+      let html = `<div class="options">`;
+
+      options.forEach(opt => {
+        html += `<button onclick="handleOption(this,'${opt}','${type}')">${opt}</button>`;
+      });
+
+      if (type === "multi") {
+        html += `<br><button onclick="submitMulti()" style="background:#2563eb;color:white;">Next</button>`;
+      }
+
+      html += `</div>`;
+      chat.innerHTML += html;
+    }
+    function handleOption(btn, value, type) {
+      if (type === "multi") {
+        btn.classList.toggle("selected");
+
+        if (selectedAnswers.includes(value)) {
+          selectedAnswers = selectedAnswers.filter(v => v !== value);
+        } else {
+          selectedAnswers.push(value);
+        }
+      } else {
+        document.querySelector(".options")?.remove();
+        showUserMessage(value);
+        nextStep();
+      }
+    }
+
+    function submitMulti() {
+      if (selectedAnswers.length === 0) return;
+
+      document.querySelector(".options")?.remove();
+      showUserMessage(selectedAnswers.join(", "));
+      selectedAnswers = [];
+      nextStep();
+    }
+
+    function nextStep() {
+      step++;
+
+      if (step >= jobFlow.length) return;
+
+      setTimeout(() => {
+        showBotMessage(jobFlow[step].question);
+
+        if (jobFlow[step].type === "single" || jobFlow[step].type === "multi") {
+          showOptions(jobFlow[step].options, jobFlow[step].type);
+        }
+      }, 600);
+    }
+
+    window.onload = function () {
+      showBotMessage(jobFlow[0].question);
+      nextStep();
+    };
+  </script>
+
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+
+  <div w3-include-html="footer.html"></div>
+
+  <script>
+    w3.includeHTML();
+  </script>
+
+
+</body>
+
+</html>

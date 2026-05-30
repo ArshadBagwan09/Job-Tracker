@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="Style/footerStyle.css">
+
+<link rel="stylesheet" href="Style/footerEmailMsg.css">
+
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    
+    
+    <!-- google fonts link -->
+    
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Font awsome -->
+
+<script src="https://kit.fontawesome.com/ef970a0af0.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+<!-- Loading Overlay -->
+  <div class="loadingOverlay" id="loadingOverlay">
+    
+    <!-- Modern Spinner -->
+    <div class="spinner"></div>
+
+    <!-- Loading Text -->
+    <div class="spinnerText">
+      Loading, please wait...
+    </div>
+</div>
+
+	<footer>
+    	<div class="main-content">
+    		<div class="left content-box">
+    			<h2>About Us</h2>
+    			<div class="content">
+    				<p>
+          Job Tracker helps you manage your job applications efficiently.
+          Track application status, interviews, offers, and deadlines — all in one place.
+          Stay organized and land your dream job faster.
+        </p>
+    				<div class="social">
+    					<a href="mailto:kitcollegework119@gmail.com"><span class="fab fa-google"></span></a>
+    					<a href="#"><span class="fab fa-facebook-f"></span></a>
+    					<a href="#"><span class="fab fa-linkedin"></span></a>
+    					<a href="#"><span class="fab fa-instagram"></span></a>
+    				</div>
+    			</div>
+    		</div>
+    		
+    		<div class="center content-box">
+    			<h2>Address</h2>
+    			<div class="content">
+    				<div class="place">
+    					<span class="fas fa-map-marker-alt"></span>
+    					<a href="https://www.google.com/maps/place/Sirat+Mohalla,+Datta+Colony,+Kolhapur,+Maharashtra+416008" target="_blank" class="text">
+        					Jawahar Nagar, Kolhapur, 416012
+    					</a>
+					</div>
+   			
+    				<div class="phone">
+    					<span class="fas fa-phone-alt"></span>
+    					<a href="tel:+918600646475" class="text">+91 8600646475</a>
+    				</div>
+    			
+    				<div class="email">
+    					<span class="fas fa-envelope"></span>
+    					<a href="mailto:kitcollegework@gmail.com" class="text">kitcollegework119@gmail.com</a>
+    				</div>
+    			</div>
+    		</div>
+    		
+    		<div class="right content-box">
+    			<h2>Contact Us</h2>
+    			<div class="content">
+					<form id="contactForm">
+  <div class="input-group">
+    <input type="email" class="input" name="email" required>
+    <label class="placeholder"><i class="fa fa-envelope icon"></i>Email *</label>
+  </div>
+
+  <div class="input-group">
+    <textarea rows="2" name="message" class="input" required></textarea>
+    <label class="placeholder"><i class="fa-solid fa-message icon"></i>Enter Message *</label>
+  </div>
+
+  <div class="btnContact">
+    <button type="submit">Send</button>
+  </div>
+</form>
+
+    			</div>
+    		</div>
+    		
+    		
+    	</div>
+    	<div style="text-align:center; font-size:14px; padding-bottom:10px; padding-top:15px; font-family:poppins;">
+ 					 © 2026 Job Tracker. All rights reserved.
+			</div>
+    </footer>
+    
+    <script>   
+    
+ // JavaScript to check if input is not empty
+    window.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('.input');
+        inputs.forEach(function(input) {
+            input.addEventListener('input', function () {
+                if (input.value.trim() !== "") {
+                    input.classList.add('not-empty');
+                } else {
+                    input.classList.remove('not-empty');
+                }
+            });
+
+            // Check initial state (e.g. after form reload)
+            if (input.value.trim() !== "") {
+                input.classList.add('not-empty');
+            }
+        });
+    });
+ 
+ 
+ 
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contactForm');
+        const toast = document.getElementById('toastBox');
+        const title = document.getElementById('toastTitle');
+        const message = document.getElementById('toastMessage');
+        const progress = toast.querySelector('.progress-bar');
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault(); // prevent default form reload
+
+          const formData = new FormData(form);
+          
+       // ✅ Debug: console me formData ke values print karenge
+          for (let [key, value] of formData.entries()) {
+              console.log(key, value);
+          }
+          
+			showLoader();
+			fetch('SendContactEmailServlet', {
+				  method: 'POST',
+				  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				  body: new URLSearchParams(new FormData(form))
+				})
+          .then(res => res.text())
+          .then(data => {
+        	  hideLoader();
+            showToast('✅ Success!', 'Your message was sent successfully.', 'success');
+            form.reset();
+          })
+          .catch(err => {
+        	  hideLoader();
+            showToast('❌ Failed!', 'Something went wrong.', 'error');
+          });
+        });
+
+        function showToast(titleText, msgText, type) {
+          title.textContent = titleText;
+          message.textContent = msgText;
+          toast.className = `toast show ${type}`;
+          
+          progress.style.animation = 'none';
+          void progress.offsetWidth; // restart animation
+          progress.style.animation = 'progress 3s linear forwards';
+
+          setTimeout(() => {
+            toast.className = 'toast'; // remove all extra classes
+          }, 3000);
+        }
+      });
+ 
+
+    </script>
+    
+    <script>
+function showLoader() {
+    document.getElementById("loadingOverlay").style.display = "flex";
+}
+function hideLoader() {
+    document.getElementById("loadingOverlay").style.display = "none";
+}
+
+//====== LOADING CONTROL ======
+function showLoading() {
+  document.getElementById("loadingOverlay").style.display = "flex";
+}
+function hideLoading() {
+  document.getElementById("loadingOverlay").style.display = "none";
+}
+</script>
+</body>
+</html>	

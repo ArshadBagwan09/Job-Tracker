@@ -1,0 +1,340 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	text-decoration: none;
+}
+
+body {
+	background: linear-gradient(135deg, #a8edea, #fed6e3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	font-family: poppins,"MuseoModerno", sans-serif;
+}
+
+button, a, input, textarea, select {
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent; /* Mobile highlight remove */
+}
+
+.login-box h1 {
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px;
+	transition: all 0.3s ease;
+	transition-delay: 0.05s;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	background: linear-gradient(135deg, rgb(3, 4, 94), rgb(0, 119, 182), rgb(0, 180, 216)); /* Deep Navy to Aqua */
+
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.login-box .txtHeading {
+	text-align: center;
+}
+
+.login-box {
+	background: white; padding : 30px;
+	border-radius: 10px;
+	width: 350px;
+	box-shadow: 0 10px 18px rgba(0, 0, 0, 0.5);
+	padding: 30px;
+}
+
+.login-box p{
+	font-family: poppins;
+	font-size: clamp(14px, 2vw, 18px);
+	display: flex;
+	justify-content: center;
+	color: #333;
+}
+
+input[type="submit"] {
+	width: 333px;
+	padding: 12px;
+	background: linear-gradient(135deg, rgb(3, 4, 94), rgb(0, 119, 182), rgb(0, 180, 216)); /* Deep Navy to Aqua */
+	font-family: poppins;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	margin: 20px 0 20px 20px;
+	font-size: 14px;
+	transition: background 0.5s ease-in-out;
+}
+
+input[type="submit"]:hover {
+background: linear-gradient(135deg, rgb(0, 102, 204), rgb(102, 178, 255)); /* Business Blue Gradient */
+transition-delay: 3s; /* 3 second delay before background starts changing */
+}
+
+
+.input-group {
+	position: relative;
+}
+
+.input {
+	padding: 15px;
+	width: 100%;
+	max-width: 300px;
+	margin: 8px 0 16px 20px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	font-family: poppins;
+}
+
+.placeholder {
+	position: absolute;
+	top: 23px;
+	left: 28px;
+	font-size: 14px;
+	padding: 0px 5px;
+	color: #554971;
+	transition: 0.3s;
+	pointer-events: none;
+	background-color: transparent;
+}
+
+.input:focus+.placeholder, .input.not-empty+.placeholder {
+	top: -1px;
+	color: #0056b3;
+	background-color: #fff;
+}
+
+.input:focus {
+	border-color: #0056b3;
+}
+
+.input-group {
+	position: relative;
+}
+
+.icon {
+	position: absolute;
+	top: 25px;
+	left: -10px;
+	color: #888;
+	pointer-events: none;
+}
+
+.input {
+	padding-left: 15px;
+}
+
+.input-group:focus-within .icon {
+	color: #0056b3;
+}
+
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 1000px white inset !important;
+	box-shadow: 0 0 0 1000px white inset !important;
+	-webkit-text-fill-color: #000 !important;
+}
+
+.input-group .icon.active {
+	color: #0056b3;
+}
+
+.login-box h1.active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.3) 100%);
+    transform: skewX(-25deg);
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+
+.toggle-password {
+    position: absolute;
+    top: 26px;
+    right: 35px;
+    cursor: pointer;
+    color: #888;
+}
+
+
+
+@media (max-width: 600px) {
+	.login-box {
+		width: 85%;
+		max-width: 280px;
+		padding: 20px 15px;
+		border-radius: 10px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+	}
+
+	.login-box h1 {
+		font-size: 1.9rem;
+		margin-bottom: 20px;
+	}
+
+	.input-group {
+		display: flex;
+		align-items: center;
+		margin-left: 0;
+	}
+
+	.input-group .icon {
+		margin-right: 8px;
+		font-size: 16px;
+		color: #888;
+		position: static;
+		top: auto;
+		left: auto;
+		padding-bottom: 10px;
+	}
+
+	.input-group .input {
+		width: 100%;
+		padding: 10px;
+		font-size: 12px;
+		margin-left: 0;
+	}
+
+	.input-group .placeholder {
+		font-size: 10px;
+		left: 12px;
+		top: 18px;
+		margin-left: 20px;
+	}
+
+	.input-group .input:focus + .placeholder,
+	.input-group .input.not-empty + .placeholder {
+		top: -3px;
+	}
+
+	.login-box input[type="submit"] {
+		width: 92%;
+		font-size: 12px;
+		padding: 10px;
+	}
+
+	.login-box p {
+		text-align: center;
+		display: flow;
+	}
+
+	.input-group .toggle-password {
+		top: 23px;
+		right: 20px;
+		font-size: 13px;
+	}
+}
+
+.forgot-password {
+    text-align: center;
+}
+
+.forgot-password a {
+    font-size: clamp(12px, 2vw, 14px);
+    color: #0056b3;
+    text-decoration: none;
+	font-family: poppins;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+
+.errorDiv{
+	
+	display: flex;
+	justify-content: left;
+	margin-left: 25px;
+}
+
+.login-box .errorDiv p{
+    color: red;
+    font-size: clamp(10px, 2vw, 12px);
+    font-weight: 500;
+}
+
+.error-box {
+    background-color: rgba(255, 204, 229, 0.25);
+    backdrop-filter: blur(12px);
+    color: #b10049;
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 420px;
+    margin: 15px auto;
+    font-family: 'Poppins', sans-serif;
+    animation: slideIn 0.4s ease-in-out;
+    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.1);
+}
+
+.error-box #errorHeader{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.error-box a {
+    color: #a6003d;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px dashed #a6003d;
+}
+
+.error-box a:hover {
+    color: #7a0030;
+    border-bottom: 1px solid #7a0030;
+}
+
+@media screen and (max-width: 600px) {
+  .error-box {
+    font-size: 12px;
+    padding: 12px 5px;
+    width: 95%;
+    margin: 12px auto;
+    border-radius: 10px;
+  }
+
+  .error-box #errorHeader {
+    font-size: 14px;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .error-box a {
+    display: inline-block;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .error-box {
+    font-size: 13px;
+    padding: 10px 4px;
+  }
+
+  .error-box a {
+    font-size: 13px;
+  }
+}
+
